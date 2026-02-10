@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="displayCard" format=3 uid="uid://cskd73waeatp4"]
+
+[ext_resource type="Script" uid="uid://dhw17fdfxj648" path="res://scripts/displayCard.gd" id="1_lcet2"]
+[ext_resource type="Texture2D" uid="uid://cukbhuxliua1n" path="res://assets/images/fond_outils.png" id="1_rkgnc"]
+[ext_resource type="Texture2D" uid="uid://dwrktgdavonfy" path="res://assets/sprite/tronconneuse.png" id="2_www85"]
+
+[resource]
+script = ExtResource("1_lcet2")
+id = "tronconneuse"
+name = "Tronçonneuse"
+rank = 3
+description = "détruit n'importe quel outil ou végétaux de rang 2 ou moins"
+image = ExtResource("2_www85")
+background = ExtResource("1_rkgnc")
+type = "Outil"
+atq = 4
+spd = 6
+currenthp = 7
+maxhp = 7
+metadata/_custom_type_script = "uid://dhw17fdfxj648"

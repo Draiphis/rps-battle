@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="RPS Battle"
+run/main_scene="uid://bunhm735qqiri"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 

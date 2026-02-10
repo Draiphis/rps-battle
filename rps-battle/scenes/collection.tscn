@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://ck5p5j3enprps"]
+
+[ext_resource type="Script" uid="uid://c4y4ja0y0fcvd" path="res://scripts/collection.gd" id="1_mldy4"]
+[ext_resource type="Script" uid="uid://dhw17fdfxj648" path="res://scripts/displayCard.gd" id="2_5vqia"]
+[ext_resource type="Resource" uid="uid://cdisqig3i5iwq" path="res://cards/ciseaux.tres" id="3_5vqia"]
+[ext_resource type="Resource" uid="uid://b3o2pmky6g3fh" path="res://cards/feuille.tres" id="4_yhtot"]
+[ext_resource type="Resource" uid="uid://ccu58n23uw18m" path="res://cards/pierre.tres" id="5_p8q5u"]
+[ext_resource type="Resource" uid="uid://bra14eadw71fj" path="res://cards/puit.tres" id="6_2ukpw"]
+[ext_resource type="PackedScene" uid="uid://bunhm735qqiri" path="res://scenes/card.tscn" id="6_04f8q"]
+[ext_resource type="Resource" uid="uid://ddmnnpopu15p0" path="res://cards/grokayou.tres" id="7_yhtot"]
+[ext_resource type="Resource" uid="uid://cskd73waeatp4" path="res://cards/tronconneuse.tres" id="8_04f8q"]
+[ext_resource type="Resource" uid="uid://co3625q1jt7kl" path="res://cards/profchene.tres" id="9_sgbrj"]
+
+[node name="Collection" type="Control" unique_id=508822812]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1080.0
+offset_bottom = 600.0
+script = ExtResource("1_mldy4")
+cards = Array[ExtResource("2_5vqia")]([ExtResource("3_5vqia"), ExtResource("4_yhtot"), ExtResource("5_p8q5u"), ExtResource("6_2ukpw"), ExtResource("7_yhtot"), ExtResource("8_04f8q"), ExtResource("9_sgbrj")])
+card_scene = ExtResource("6_04f8q")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=2018829237]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.64000005
+anchor_bottom = 1.0
+offset_right = -0.20007324
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardsGrid" type="GridContainer" parent="ScrollContainer" unique_id=343299251]
+layout_mode = 2
+columns = 3
+
+[node name="DeckPanel" type="Control" parent="." unique_id=988898005]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchor_left = 0.651
+anchor_right = 1.056
+anchor_bottom = 1.0
+offset_left = -0.08001709
+offset_right = 5.5200195
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MesDecks" type="Label" parent="DeckPanel" unique_id=745830919]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Mes Decks"
+
+[node name="ListeDecks" type="VBoxContainer" parent="DeckPanel" unique_id=747874511]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 29.0
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeckPanel/ListeDecks" unique_id=1483422084]
+layout_mode = 2
+
+[node name="ButtonDeck1" type="Button" parent="DeckPanel/ListeDecks/VBoxContainer" unique_id=1529453017]
+layout_mode = 2
+text = "Deck 1"
+
+[node name="Compteur1" type="Label" parent="DeckPanel/ListeDecks/VBoxContainer" unique_id=1900415714]
+layout_mode = 2
+text = "0"
+
+[node name="Deck1" type="Panel" parent="DeckPanel/ListeDecks/VBoxContainer" unique_id=812341574]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="DeckPanel/ListeDecks" unique_id=1941806428]
+layout_mode = 2
+
+[node name="ButtonDeck2" type="Button" parent="DeckPanel/ListeDecks/VBoxContainer2" unique_id=506137993]
+layout_mode = 2
+text = "Deck 2"
+
+[node name="Compteur2" type="Label" parent="DeckPanel/ListeDecks/VBoxContainer2" unique_id=1326004451]
+layout_mode = 2
+text = "0"
+
+[node name="Deck2" type="Panel" parent="DeckPanel/ListeDecks/VBoxContainer2" unique_id=1261862623]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2

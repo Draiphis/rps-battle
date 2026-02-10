@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="displayCard" format=3 uid="uid://ddmnnpopu15p0"]
+
+[ext_resource type="Texture2D" uid="uid://ck0q77i0h1jo8" path="res://assets/images/fond_mineraux.png" id="1_anq0e"]
+[ext_resource type="Script" uid="uid://dhw17fdfxj648" path="res://scripts/displayCard.gd" id="1_ms1nx"]
+[ext_resource type="Texture2D" uid="uid://linkyhtuvpdr" path="res://assets/sprite/kayou.png" id="2_o5acs"]
+
+[resource]
+script = ExtResource("1_ms1nx")
+id = "grokayou"
+name = "GroKayou"
+rank = 3
+description = "Si cette carte subit des degats, gagne +1 d'ATQ"
+image = ExtResource("2_o5acs")
+background = ExtResource("1_anq0e")
+type = "Minéraux"
+atq = 6
+spd = 1
+currenthp = 13
+maxhp = 13
+metadata/_custom_type_script = "uid://dhw17fdfxj648"

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="displayCard" format=3 uid="uid://ccu58n23uw18m"]
+
+[ext_resource type="Texture2D" uid="uid://ck0q77i0h1jo8" path="res://assets/images/fond_mineraux.png" id="1_or567"]
+[ext_resource type="Script" uid="uid://dhw17fdfxj648" path="res://scripts/displayCard.gd" id="1_x24no"]
+[ext_resource type="Texture2D" uid="uid://bbv557yry0k7g" path="res://assets/sprite/pierre.png" id="2_17sph"]
+
+[resource]
+script = ExtResource("1_x24no")
+id = "pierre"
+name = "Pierre"
+rank = 1
+description = "C'est une pierre"
+image = ExtResource("2_17sph")
+background = ExtResource("1_or567")
+type = "Minéraux"
+atq = 2
+spd = 3
+currenthp = 4
+maxhp = 4
+metadata/_custom_type_script = "uid://dhw17fdfxj648"

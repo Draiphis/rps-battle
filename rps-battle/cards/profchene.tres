@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="displayCard" format=3 uid="uid://co3625q1jt7kl"]
+
+[ext_resource type="Script" uid="uid://dhw17fdfxj648" path="res://scripts/displayCard.gd" id="1_flca4"]
+[ext_resource type="Texture2D" uid="uid://c5m46d2x54aec" path="res://assets/images/fond_vegetaux.png" id="1_q7ug7"]
+[ext_resource type="Texture2D" uid="uid://ui5iaqgocyqc" path="res://assets/sprite/arbre.png" id="2_qleid"]
+
+[resource]
+script = ExtResource("1_flca4")
+id = "profchene"
+name = "Professeur Chêne"
+rank = 3
+description = "invoque 1 Feuille et une Branche à sa mort"
+image = ExtResource("2_qleid")
+background = ExtResource("1_q7ug7")
+type = "Végétaux"
+atq = 4
+spd = 4
+currenthp = 10
+maxhp = 10
+metadata/_custom_type_script = "uid://dhw17fdfxj648"

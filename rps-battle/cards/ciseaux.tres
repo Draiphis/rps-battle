@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="displayCard" format=3 uid="uid://cdisqig3i5iwq"]
+
+[ext_resource type="Texture2D" uid="uid://cukbhuxliua1n" path="res://assets/images/fond_outils.png" id="1_eqnla"]
+[ext_resource type="Texture2D" uid="uid://b5andnjoh1kaj" path="res://assets/sprite/ciseaux.png" id="2_f1ft0"]
+[ext_resource type="Script" uid="uid://dhw17fdfxj648" path="res://scripts/displayCard.gd" id="4_eqnla"]
+
+[resource]
+script = ExtResource("4_eqnla")
+id = "ciseaux"
+name = "Ciseaux"
+rank = 1
+description = "Ce sont des ciseaux"
+image = ExtResource("2_f1ft0")
+background = ExtResource("1_eqnla")
+type = "Outils"
+atq = 2
+spd = 5
+currenthp = 3
+maxhp = 3
+metadata/_custom_type_script = "uid://dhw17fdfxj648"

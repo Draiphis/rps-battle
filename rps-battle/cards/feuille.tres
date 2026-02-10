@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="displayCard" format=3 uid="uid://b3o2pmky6g3fh"]
+
+[ext_resource type="Texture2D" uid="uid://c5m46d2x54aec" path="res://assets/images/fond_vegetaux.png" id="1_5xnc6"]
+[ext_resource type="Script" uid="uid://dhw17fdfxj648" path="res://scripts/displayCard.gd" id="1_ve452"]
+[ext_resource type="Texture2D" uid="uid://c11anmtfn4l43" path="res://assets/sprite/feuille.png" id="2_klo3i"]
+
+[resource]
+script = ExtResource("1_ve452")
+id = "feuille"
+name = "Feuille"
+rank = 1
+description = "C'est une feuille"
+image = ExtResource("2_klo3i")
+background = ExtResource("1_5xnc6")
+type = "Végétaux"
+atq = 1
+spd = 6
+currenthp = 3
+maxhp = 3
+metadata/_custom_type_script = "uid://dhw17fdfxj648"

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="displayCard" format=3 uid="uid://bra14eadw71fj"]
+
+[ext_resource type="Script" uid="uid://dhw17fdfxj648" path="res://scripts/displayCard.gd" id="1_jnw1b"]
+[ext_resource type="Texture2D" uid="uid://d2rtwg6j4ml2v" path="res://assets/images/fond_construction.png" id="1_xjnwc"]
+[ext_resource type="Texture2D" uid="uid://hstf02hifmr7" path="res://assets/sprite/puit.png" id="2_mst3m"]
+
+[resource]
+script = ExtResource("1_jnw1b")
+id = "puit"
+name = "Puit"
+rank = 2
+description = "C'est un puit"
+image = ExtResource("2_mst3m")
+background = ExtResource("1_xjnwc")
+type = "Construction"
+atq = 4
+spd = 2
+currenthp = 6
+maxhp = 6
+metadata/_custom_type_script = "uid://dhw17fdfxj648"
