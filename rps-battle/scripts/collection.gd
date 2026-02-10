@@ -34,10 +34,14 @@ var zoomed_card: Card = null
 
 
 func _ready():
+	$Retour.connect("pressed", Callable(self, "_on_retour"))
 	# Initialisation des decks
 	load_all_decks()
 	for i in range(decks.size()):
 		decks[i].name = "Deck %d" % (i + 1)
+	
+	#Bouton retour
+	
 
 	# Connecter les boutons de sélection des decks
 	$DeckPanel/ListeDecks/VBoxContainer/ButtonDeck1.pressed.connect(Callable(self, "_on_select_deck").bind(0))
@@ -57,6 +61,11 @@ func _ready():
 	_refresh_deck_panel(current_deck_index)
 	_update_card_count(current_deck_index)
 
+
+func _on_retour():
+	# Charge la collection du joueur
+	get_tree().change_scene_to_file("res://scenes/maintitle.tscn")
+	print("changement de scene")
 
 # Sélection du deck actif
 func _on_select_deck(deck_index: int):
