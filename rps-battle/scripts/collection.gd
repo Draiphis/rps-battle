@@ -27,6 +27,10 @@ var current_deck_index := 0
 
 # Chevauchement des mini-cartes
 var overlap := 0.95
+@onready var zoom_layer = $ZoomLayer
+@onready var zoom_background = $ZoomLayer/Background
+
+var zoomed_card: Card = null
 
 
 func _ready():
@@ -46,6 +50,8 @@ func _ready():
 		card_instance.set_display_size(Card.CardSize.NORMAL)
 		grid.add_child(card_instance)
 		card_instance.card_selected.connect(Callable(self, "_on_card_selected"))
+		card_instance.card_to_remove.connect(Callable(self,"_on_card_remove"))
+		card_instance.card_zoom.connect(Callable(self,"_on_card_zoom"))
 
 	# Afficher le deck actif au démarrage
 	_refresh_deck_panel(current_deck_index)
@@ -74,6 +80,67 @@ func _on_card_selected(card_id: String):
 	_refresh_deck_panel(current_deck_index)
 	_update_card_count(current_deck_index)
 	save_all_decks()
+	
+func _on_card_remove(card_id: String):
+	var active_deck = decks[current_deck_index]
+
+	if not active_deck.cards.has(card_id):
+		print("La carte n'est pas dans le deck")
+		return
+
+	# Retire UNE occurrence de la carte
+	active_deck.cards.erase(card_id)
+
+	print("Carte retirée du deck", current_deck_index + 1, ":", card_id)
+
+	_refresh_deck_panel(current_deck_index)
+	_update_card_count(current_deck_index)
+
+	# Sauvegarde automatique
+	save_all_decks()
+	
+func _on_card_zoom(card_res: displayCard):
+	# Fermer si une carte est déjà zoomée
+	if zoomed_card:
+		_close_zoom()
+		return
+
+	# Affiche le fond semi-transparent
+	zoom_background.visible = true
+
+	# Instancie la carte
+	zoomed_card = card_scene.instantiate() as Card
+	zoomed_card.set_card(card_res)
+
+	# Applique la taille MAXI (agrandit tout le contenu)
+	zoomed_card.set_display_size(Card.CardSize.MAXI)
+
+	# Centre la carte à l'écran
+	var viewport_size = get_viewport_rect().size
+	var zoomed_size = zoomed_card.custom_minimum_size * zoomed_card.scale
+	zoomed_card.position = (viewport_size - zoomed_size) / 2
+
+	# Fermer avec clic molette ou clic droit
+	zoomed_card.gui_input.connect(_on_zoom_input)
+
+	# Ajoute la carte au CanvasLayer
+	zoom_layer.add_child(zoomed_card)
+
+
+
+	print("Carte zoomée ajoutée")
+	
+
+func _on_zoom_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index in [MOUSE_BUTTON_MIDDLE, MOUSE_BUTTON_RIGHT]:
+			_close_zoom()
+
+func _close_zoom():
+	if zoomed_card:
+		zoomed_card.queue_free()
+		zoomed_card = null
+	zoom_background.visible = false
 
 
 # Rafraîchir l'affichage des mini-cartes d'un deck
