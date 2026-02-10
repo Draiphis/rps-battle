@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://c5u8af1q07yjc"]
+
+[node name="Control" type="Control" unique_id=1839091901]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1984070559]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 150.0
+offset_right = -150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 7
+
+[node name="EnnemyHand" type="HBoxContainer" parent="VBoxContainer" unique_id=283293574]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+
+[node name="EnnemyField" type="HBoxContainer" parent="VBoxContainer" unique_id=545824618]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+theme_override_constants/separation = 55
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/EnnemyField" unique_id=1994791791]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="Slot1" type="ColorRect" parent="VBoxContainer/EnnemyField" unique_id=1850212799]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Slot2" type="ColorRect" parent="VBoxContainer/EnnemyField" unique_id=932916093]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Slot3" type="ColorRect" parent="VBoxContainer/EnnemyField" unique_id=1725494319]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Slot4" type="ColorRect" parent="VBoxContainer/EnnemyField" unique_id=1725295907]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Slot5" type="ColorRect" parent="VBoxContainer/EnnemyField" unique_id=938992616]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="PlayerField" type="HBoxContainer" parent="VBoxContainer" unique_id=1390959516]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+theme_override_constants/separation = 55
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PlayerField" unique_id=743612076]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="Slot1" type="ColorRect" parent="VBoxContainer/PlayerField" unique_id=44639994]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Slot2" type="ColorRect" parent="VBoxContainer/PlayerField" unique_id=216713469]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Slot3" type="ColorRect" parent="VBoxContainer/PlayerField" unique_id=632476729]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Slot4" type="ColorRect" parent="VBoxContainer/PlayerField" unique_id=1800373597]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Slot5" type="ColorRect" parent="VBoxContainer/PlayerField" unique_id=121779618]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="PlayerHand" type="HBoxContainer" parent="VBoxContainer" unique_id=218034589]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Deck" format=3]
+[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://p0qvdeh5j6l0"]
 
-[ext_resource type="Script" path="res://scripts/deck.gd" id="1_14vgl"]
+[ext_resource type="Script" uid="uid://c65syn1scsttm" path="res://scripts/deck.gd" id="1_14vgl"]
 
 [resource]
 script = ExtResource("1_14vgl")
