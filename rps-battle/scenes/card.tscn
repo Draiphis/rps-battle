@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://doqx5dvbojy56" path="res://assets/images/fond_feuille.png" id="1_kg30u"]
 [ext_resource type="Script" uid="uid://b86pbrs8slxnn" path="res://scripts/card.gd" id="1_sy11y"]
 [ext_resource type="Texture2D" uid="uid://c11anmtfn4l43" path="res://assets/sprite/feuille.png" id="2_ktuci"]
+[ext_resource type="PackedScene" uid="uid://dp34e27vfw436" path="res://scenes/invoquer.tscn" id="5_sy11y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kg30u"]
 bg_color = Color(0.65951276, 0.59485424, 0.4308019, 1)
@@ -50,14 +51,15 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [node name="Card" type="Control" unique_id=941854260]
-clip_contents = true
 layout_mode = 3
 anchors_preset = 0
+offset_top = 20.0
 offset_right = 200.0
-offset_bottom = 280.0
+offset_bottom = 300.0
 script = ExtResource("1_sy11y")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=513929864]
+clip_contents = true
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -316,3 +318,10 @@ theme_override_constants/line_spacing = -3
 theme_override_font_sizes/font_size = 7
 text = "Voici une breve description des capacités de la feuille. Elle est fort capable, même si c'est une carte de base"
 autowrap_mode = 2
+
+[node name="Invoquer" parent="." unique_id=2012927254 instance=ExtResource("5_sy11y")]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 169.0
+offset_right = 155.0
+offset_bottom = 206.0

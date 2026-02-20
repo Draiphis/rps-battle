@@ -109,35 +109,45 @@ func _on_card_remove(card_id: String):
 	save_all_decks()
 	
 func _on_card_zoom(card_res: displayCard):
-	# Fermer si une carte est déjà zoomée
+	# Si une carte est déjà zoomée → on ferme
 	if zoomed_card:
 		_close_zoom()
 		return
 
-	# Affiche le fond semi-transparent
+	# Active le fond sombre
 	zoom_background.visible = true
 
 	# Instancie la carte
 	zoomed_card = card_scene.instantiate() as Card
 	zoomed_card.set_card(card_res)
+	zoomed_card.set_display_size(Card.CardSize.NORMAL)
 
-	# Applique la taille MAXI (agrandit tout le contenu)
-	zoomed_card.set_display_size(Card.CardSize.MAXI)
-
-	# Centre la carte à l'écran
-	var viewport_size = get_viewport_rect().size
-	var zoomed_size = zoomed_card.custom_minimum_size * zoomed_card.scale
-	zoomed_card.position = (viewport_size - zoomed_size) / 2
-
-	# Fermer avec clic molette ou clic droit
-	zoomed_card.gui_input.connect(_on_zoom_input)
-
-	# Ajoute la carte au CanvasLayer
+	# Ajoute au layer AVANT de calculer la taille
 	zoom_layer.add_child(zoomed_card)
 
+	# Force le layout à se calculer
+	await get_tree().process_frame
 
+	# Facteur de zoom
+	var zoom_factor := 2.0
+	zoomed_card.scale = Vector2.ZERO
 
-	print("Carte zoomée ajoutée")
+	# Centrage
+	var viewport_size = get_viewport_rect().size
+	var card_size = zoomed_card.size * zoom_factor
+	zoomed_card.position = (viewport_size - card_size) / 2
+
+	# Animation smooth
+	var tween = create_tween()
+	tween.tween_property(zoomed_card, "scale", Vector2(zoom_factor, zoom_factor), 0.2)\
+		.set_trans(Tween.TRANS_BACK)\
+		.set_ease(Tween.EASE_OUT)
+
+	# Fermeture clic droit ou molette
+	zoomed_card.gui_input.connect(_on_zoom_input)
+
+	print("Carte zoomée")
+
 	
 
 func _on_zoom_input(event):

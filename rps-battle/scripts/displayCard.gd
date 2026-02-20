@@ -12,3 +12,10 @@ class_name displayCard  # le nom de ton type ressource
 @export var spd: int
 @export var currenthp: int
 @export var maxhp : int
+
+var card_data
+
+
+func setup():
+	card_data = deckManager.get_card_data(id)
+	

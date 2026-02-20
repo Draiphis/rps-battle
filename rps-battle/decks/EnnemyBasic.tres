@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://d1vti0716cumc"]
+
+[ext_resource type="Script" uid="uid://c65syn1scsttm" path="res://scripts/deck.gd" id="1_skvar"]
+
+[resource]
+script = ExtResource("1_skvar")
+name = "EnnemyBasic"
+cards = Array[String](["ciseaux", "ciseaux", "ciseaux", "ciseaux", "ciseaux", "pierre", "pierre", "pierre", "pierre", "pierre", "feuille", "feuille", "feuille", "feuille", "feuille", "grokayou", "grokayou", "profchene", "profchene", "puit"])
+metadata/_custom_type_script = "uid://c65syn1scsttm"

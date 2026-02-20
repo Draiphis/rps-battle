@@ -26,10 +26,6 @@ theme_override_constants/separation = 7
 custom_minimum_size = Vector2(0, 175)
 layout_mode = 2
 
-[node name="EnnemyHand" type="Control" parent="VBoxContainer/EnnemyHand" unique_id=1102382813]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-
 [node name="EnnemyField" type="HBoxContainer" parent="VBoxContainer" unique_id=545824618]
 custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
@@ -102,9 +98,21 @@ color = Color(0.27450982, 0.38431373, 0.3764706, 1)
 custom_minimum_size = Vector2(0, 175)
 layout_mode = 2
 
-[node name="PlayerHand" type="Control" parent="VBoxContainer/PlayerHand" unique_id=2018788538]
-custom_minimum_size = Vector2(852, 0)
-layout_mode = 2
+[node name="EnnemyDeck" type="ColorRect" parent="." unique_id=2012024214]
+custom_minimum_size = Vector2(125, 175)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 133.0
+offset_bottom = 183.0
+
+[node name="PlayerDeck" type="ColorRect" parent="." unique_id=2097674399]
+custom_minimum_size = Vector2(125, 175)
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 464.0
+offset_right = 1141.0
+offset_bottom = 639.0
 
 [node name="PlayerCimetery" type="ColorRect" parent="." unique_id=883199543]
 custom_minimum_size = Vector2(125, 175)
@@ -123,100 +131,3 @@ offset_top = 321.0
 offset_right = 133.0
 offset_bottom = 496.0
 color = Color(0.11372549, 0.003921569, 0.10980392, 1)
-
-[node name="ZoomLayer" type="CanvasLayer" parent="." unique_id=1934407360]
-layer = 100
-
-[node name="Background" type="ColorRect" parent="ZoomLayer" unique_id=1216765158]
-visible = false
-custom_minimum_size = Vector2(852, 648)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 150.0
-offset_right = -150.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.6666667)
-
-[node name="PlayerDeckZone" type="Control" parent="." unique_id=38517941]
-custom_minimum_size = Vector2(125, 175)
-layout_mode = 1
-anchor_left = 0.88900006
-anchor_top = 0.72800004
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -8.128052
-offset_top = -7.7440186
-offset_right = -11.0
-offset_bottom = -9.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="PlayerDeck" type="ColorRect" parent="PlayerDeckZone" unique_id=2097674399]
-custom_minimum_size = Vector2(125, 175)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-
-[node name="StackContainer" type="Control" parent="PlayerDeckZone" unique_id=1461845044]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="NbCard" type="Label" parent="PlayerDeckZone" unique_id=1624516692]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.768
-anchor_right = 1.0
-anchor_bottom = 0.13100001
-offset_bottom = 0.07499695
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0, 0.039215688, 0, 1)
-text = "20"
-
-[node name="EnnemyDeckZone" type="Control" parent="." unique_id=2034276408]
-custom_minimum_size = Vector2(125, 175)
-layout_mode = 1
-anchor_left = 0.007
-anchor_top = 0.012
-anchor_right = 0.115
-anchor_bottom = 0.279
-offset_left = -3.0640001
-offset_top = 7.224
-offset_right = -2.4799957
-offset_bottom = 9.207993
-
-[node name="EnnemyDeck" type="ColorRect" parent="EnnemyDeckZone" unique_id=2012024214]
-custom_minimum_size = Vector2(125, 175)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="StackContainer" type="Control" parent="EnnemyDeckZone" unique_id=1158174597]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="NbCard" type="Label" parent="EnnemyDeckZone" unique_id=682804211]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -32.5
-offset_right = -13.5
-offset_bottom = 23.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 0.047058824, 1, 1)
-text = "20"

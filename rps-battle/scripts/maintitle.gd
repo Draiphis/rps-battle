@@ -9,7 +9,7 @@ func _ready():
 	$Quitter.connect("pressed", Callable(self, "_on_quitter_pressed"))
 
 func _on_jouer_pressed():
-	pass
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_collection_pressed():
 	# Charge la collection du joueur

@@ -1,28 +1,30 @@
 extends Control
-
 class_name Card
 
 @export var card: displayCard
+@onready var summon_button = $Invoquer/SummonButton
+var game_controller
+var is_player_card := true
+var is_summoned := false
 
-enum CardSize { NORMAL, MINI, MAXI }
-
-func set_display_size(card_size: int):
-	var ratio := 1.0
-	match card_size:
-		CardSize.NORMAL:
-			ratio = 1.0
-		CardSize.MINI:
-			ratio = 0.4
-		CardSize.MAXI:
-			ratio = 2.0  # ajustable pour le zoom
-
-	self.scale = Vector2(ratio, ratio)
-	#NE PAS TOUCHER SINON LES CARTES NE S'AFFICHENT PAS DANS COLLECTION
-	self.custom_minimum_size = Vector2(200,280)
+enum CardSize { NORMAL, MINI, MAXI, HAND, FIELD }
 
 signal card_selected(card_id: String)
 signal card_to_remove(card_id: String)
 signal card_zoom(card: displayCard)
+
+func _ready():
+	summon_button.visible = false
+	summon_button.mouse_filter = Control.MOUSE_FILTER_STOP
+	summon_button.pressed.connect(_on_summon_pressed)
+
+	# hover sur la carte
+	connect("mouse_entered", Callable(self, "_on_mouse_entered"))
+	connect("mouse_exited", Callable(self, "_on_mouse_exited"))
+
+	# hover sur le bouton
+	summon_button.connect("mouse_entered", Callable(self, "_on_mouse_entered"))
+	summon_button.connect("mouse_exited", Callable(self, "_on_mouse_exited"))
 
 func set_card(c: displayCard):
 	card = c
@@ -38,6 +40,21 @@ func set_card(c: displayCard):
 		$AspectRatioContainer/Panel/Panel/CurrentHP.text = str(card.currenthp)
 		$AspectRatioContainer/Panel/Panel/MaxHP.text = str(card.maxhp)
 
+func set_display_size(card_size: int):
+	var ratio := 1.0
+	match card_size:
+		CardSize.NORMAL:
+			ratio = 1.0
+		CardSize.HAND:
+			ratio = 0.6
+		CardSize.FIELD:
+			ratio=0.5
+		CardSize.MINI:
+			ratio = 0.4
+		CardSize.MAXI:
+			ratio = 2.0
+	self.scale = Vector2(ratio, ratio)
+	self.custom_minimum_size = Vector2(200,280)*ratio
 
 func _gui_input(event):
 	if event is InputEventMouseButton:
@@ -46,7 +63,18 @@ func _gui_input(event):
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			emit_signal("card_to_remove", card.id)
 		if event.button_index == MOUSE_BUTTON_MIDDLE and event.pressed:
-			print("MOLETTE détectée sur carte :", card.name)
 			emit_signal("card_zoom", card)
-		
-		
+
+func _on_mouse_entered():
+	if is_player_card and not is_summoned:
+		summon_button.visible = true
+
+func _on_mouse_exited():
+	# Vérifie si la souris est encore sur le bouton avant de cacher
+	if not summon_button.get_global_rect().has_point(get_viewport().get_mouse_position()):
+		summon_button.visible = false
+
+func _on_summon_pressed():
+	if game_controller:
+		game_controller.start_summon_selection(self)
+		summon_button.visible = false

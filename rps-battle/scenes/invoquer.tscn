@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dp34e27vfw436"]
+
+[node name="Invoquer" type="Control" unique_id=2012927254]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SummonButton" type="Button" parent="." unique_id=251215493]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 23
+text = "Invoquer"

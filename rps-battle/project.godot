@@ -15,6 +15,10 @@ run/main_scene="uid://bunhm735qqiri"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+deckManager="*uid://b1msx2a3e16vb"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
