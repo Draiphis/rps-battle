@@ -15,6 +15,5 @@ background = ExtResource("1_anq0e")
 type = "Minéraux"
 atq = 6
 spd = 1
-currenthp = 13
-maxhp = 13
+hp = 17
 metadata/_custom_type_script = "uid://dhw17fdfxj648"

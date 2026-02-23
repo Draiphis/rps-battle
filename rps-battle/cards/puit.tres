@@ -15,6 +15,5 @@ background = ExtResource("1_xjnwc")
 type = "Construction"
 atq = 4
 spd = 2
-currenthp = 6
-maxhp = 6
+hp = 9
 metadata/_custom_type_script = "uid://dhw17fdfxj648"

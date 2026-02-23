@@ -20,20 +20,6 @@ corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kg30u"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ligt"]
-bg_color = Color(0.83137256, 0.30980393, 0.12941177, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-corner_detail = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6u4wf"]
-bg_color = Color(0.5250524, 0.31032008, 0.5636319, 1)
-draw_center = false
-border_width_bottom = 1
-border_color = Color(0.4509804, 0, 0.08235294, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8w5pg"]
 content_margin_left = 10.0
 content_margin_top = 3.0
@@ -179,7 +165,7 @@ theme_override_colors/font_shadow_color = Color(0.28235295, 0.24705882, 0.156862
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 1
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 12
 text = "ATQ : 2"
 
 [node name="SPD" type="Label" parent="AspectRatioContainer/Panel" unique_id=291598411]
@@ -201,92 +187,24 @@ theme_override_colors/font_shadow_color = Color(0.28235295, 0.24705882, 0.156862
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 1
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 12
 text = "SPD : 7"
 
 [node name="HP" type="Label" parent="AspectRatioContainer/Panel" unique_id=1409941304]
 layout_mode = 0
-offset_left = 141.0
-offset_top = 259.5
-offset_right = 187.0
-offset_bottom = 272.5
-grow_vertical = 2
+offset_left = 152.0
+offset_top = 257.5
+offset_right = 192.0
+offset_bottom = 274.5
 mouse_filter = 1
 theme_override_colors/font_color = Color(0.9529412, 0.7294118, 0.05882353, 1)
 theme_override_colors/font_shadow_color = Color(0.28235295, 0.24705882, 0.15686275, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 1
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 12
 text = "HP :"
 vertical_alignment = 1
-
-[node name="Panel" type="Panel" parent="AspectRatioContainer/Panel" unique_id=1773203901]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -31.0
-offset_top = -24.0
-offset_right = -11.0
-offset_bottom = -4.0
-grow_horizontal = 0
-grow_vertical = 0
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_6ligt")
-
-[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/Panel/Panel" unique_id=340516657]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_right = 2
-
-[node name="MaxHP" type="Label" parent="AspectRatioContainer/Panel/Panel" unique_id=1370885526]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 11.0
-offset_right = 15.0
-offset_bottom = 21.0
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.4509804, 0, 0.08235294, 1)
-theme_override_colors/font_shadow_color = Color(0.28235295, 0.24705882, 0.15686275, 1)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 0
-theme_override_font_sizes/font_size = 5
-text = "10"
-horizontal_alignment = 1
-
-[node name="CurrentHP" type="Label" parent="AspectRatioContainer/Panel/Panel" unique_id=731876223]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 1.0
-offset_right = 15.0
-offset_bottom = 11.0
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.4509804, 0, 0.08235294, 1)
-theme_override_colors/font_shadow_color = Color(0.28235295, 0.24705882, 0.15686275, 1)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/shadow_outline_size = 1
-theme_override_font_sizes/font_size = 5
-text = "10"
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="AspectRatioContainer/Panel" unique_id=1545328495]
-layout_mode = 0
-offset_left = 169.0
-offset_top = 265.0
-offset_right = 189.0
-offset_bottom = 269.0
-mouse_filter = 1
-theme_override_constants/separation = 4
-theme_override_styles/separator = SubResource("StyleBoxFlat_6u4wf")
 
 [node name="DescriptionBorder" type="Panel" parent="AspectRatioContainer/Panel" unique_id=1331967933]
 layout_mode = 0
@@ -315,7 +233,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.9529412, 0.5921569, 0.05882353, 1)
 theme_override_colors/font_shadow_color = Color(0.28235295, 0.24705882, 0.15686275, 1)
 theme_override_constants/line_spacing = -3
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 8
 text = "Voici une breve description des capacités de la feuille. Elle est fort capable, même si c'est une carte de base"
 autowrap_mode = 2
 

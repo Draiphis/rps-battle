@@ -10,8 +10,8 @@ class_name displayCard  # le nom de ton type ressource
 @export var type: String
 @export var atq: int
 @export var spd: int
-@export var currenthp: int
-@export var maxhp : int
+@export var hp: int
+
 
 var card_data
 

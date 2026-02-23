@@ -6,6 +6,7 @@ class_name Card
 var game_controller
 var is_player_card := true
 var is_summoned := false
+var is_summonable := true
 
 enum CardSize { NORMAL, MINI, MAXI, HAND, FIELD }
 
@@ -37,8 +38,8 @@ func set_card(c: displayCard):
 		$AspectRatioContainer/Panel/DescriptionBorder/MarginContainer/Description.text = card.description
 		$AspectRatioContainer/Panel/ATQ.text = "ATQ : %s" % str(card.atq)
 		$AspectRatioContainer/Panel/SPD.text = "SPD : %s" % str(card.spd)
-		$AspectRatioContainer/Panel/Panel/CurrentHP.text = str(card.currenthp)
-		$AspectRatioContainer/Panel/Panel/MaxHP.text = str(card.maxhp)
+		$AspectRatioContainer/Panel/HP.text = "HP : %s" % str(card.hp)
+		
 
 func set_display_size(card_size: int):
 	var ratio := 1.0
@@ -66,7 +67,7 @@ func _gui_input(event):
 			emit_signal("card_zoom", card)
 
 func _on_mouse_entered():
-	if is_player_card and not is_summoned:
+	if is_player_card and is_summonable and not is_summoned :
 		summon_button.visible = true
 
 func _on_mouse_exited():

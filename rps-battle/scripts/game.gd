@@ -185,6 +185,7 @@ func summon_to_slot(slot):
 	card.set_display_size(Card.CardSize.FIELD)
 	
 	card.is_summoned = true
+	card.is_summonable = false
 	card_waiting_for_summon = null
 	
 	for s in player_field_slots.get_children():
