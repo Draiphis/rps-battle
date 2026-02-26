@@ -13,3 +13,6 @@ func draw() -> String:
 	return cards.pop_back()
 func size() -> int:
 	return cards.size()
+	
+func is_empty() -> bool:
+	return cards.size() == 0

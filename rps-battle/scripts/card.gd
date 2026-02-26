@@ -6,11 +6,13 @@ class_name Card
 var game_controller
 var is_player_card := true
 var is_summoned := false
-var is_summonable := true
+var is_summonable := false
+var instance_id: String
 
 enum CardSize { NORMAL, MINI, MAXI, HAND, FIELD }
 
-signal card_selected(card_id: String)
+signal card_selected_combat(instance_id: String)
+signal card_selected_collection(card_id: String)
 signal card_to_remove(card_id: String)
 signal card_zoom(card: displayCard)
 
@@ -18,6 +20,8 @@ func _ready():
 	summon_button.visible = false
 	summon_button.mouse_filter = Control.MOUSE_FILTER_STOP
 	summon_button.pressed.connect(_on_summon_pressed)
+	TurnManager.phase_changed.connect(_on_phase_changed)
+	instance_id = str(self.get_instance_id())
 
 	# hover sur la carte
 	connect("mouse_entered", Callable(self, "_on_mouse_entered"))
@@ -60,14 +64,15 @@ func set_display_size(card_size: int):
 func _gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			emit_signal("card_selected", card.id)
+			emit_signal("card_selected_combat", instance_id)
+			emit_signal("card_selected_collection", card.id)
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			emit_signal("card_to_remove", card.id)
 		if event.button_index == MOUSE_BUTTON_MIDDLE and event.pressed:
 			emit_signal("card_zoom", card)
 
 func _on_mouse_entered():
-	if is_player_card and is_summonable and not is_summoned :
+	if is_player_card and is_summonable and not is_summoned and not TurnManager.has_summoned_this_turn :
 		summon_button.visible = true
 
 func _on_mouse_exited():
@@ -76,6 +81,24 @@ func _on_mouse_exited():
 		summon_button.visible = false
 
 func _on_summon_pressed():
+	if TurnManager.has_summoned_this_turn:
+		
+		print("Vous ne pouvez invoquer qu'une seule carte par tour !")
+		return
 	if game_controller:
 		game_controller.start_summon_selection(self)
+		TurnManager.has_summoned_this_turn = true  # marquer qu'on a invoqué
 		summon_button.visible = false
+		
+func _on_phase_changed(phase):
+	if phase == TurnManager.Phase.MAIN:
+		is_summonable = true
+	else:
+		is_summonable = false
+
+func update_display():
+	if not card:
+		return
+	$AspectRatioContainer/Panel/HP.text = "HP : %s" % str(card.hp)
+	$AspectRatioContainer/Panel/ATQ.text = "ATQ : %s" % str(card.atq)
+	$AspectRatioContainer/Panel/SPD.text = "SPD : %s" % str(card.spd)

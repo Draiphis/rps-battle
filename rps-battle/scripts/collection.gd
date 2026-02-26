@@ -53,7 +53,7 @@ func _ready():
 		card_instance.set_card(c)
 		card_instance.set_display_size(Card.CardSize.NORMAL)
 		grid.add_child(card_instance)
-		card_instance.card_selected.connect(Callable(self, "_on_card_selected"))
+		card_instance.card_selected_collection.connect(Callable(self, "_on_card_selected"))
 		card_instance.card_to_remove.connect(Callable(self,"_on_card_remove"))
 		card_instance.card_zoom.connect(Callable(self,"_on_card_zoom"))
 
@@ -83,7 +83,7 @@ func _on_card_selected(card_id: String):
 		print("Deck plein")
 		return
 
-	active_deck.cards.append(card_id)
+	active_deck.cards.append(card_id)  # on stocke l'id
 	print("Carte ajoutée au deck", current_deck_index + 1, ":", card_id)
 
 	_refresh_deck_panel(current_deck_index)
