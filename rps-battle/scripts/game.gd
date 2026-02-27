@@ -114,6 +114,9 @@ func create_card_in_hand(card_id: String, is_player: bool):
 	card_instance.game_controller = self
 	card_instance.is_player_card = is_player
 	
+	 # --- Connexion du signal de zoom ---
+	card_instance.connect("card_zoom", Callable(self, "_on_card_zoom"))
+	
 	# Ajout dans la bonne main
 	var hand = player_hand if is_player else enemy_hand
 	hand.add_child(card_instance)
@@ -124,6 +127,7 @@ func create_card_in_hand(card_id: String, is_player: bool):
 # --- Zoom carte ---
 func _on_card_zoom(card_res: displayCard):
 	# Si une carte est déjà zoomée → on ferme
+	print("zoom")
 	if zoomed_card:
 		_close_zoom()
 

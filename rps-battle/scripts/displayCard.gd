@@ -19,3 +19,17 @@ var card_data
 func setup():
 	card_data = deckManager.get_card_data(id)
 	
+func deep_copy() -> displayCard:
+	var copy = displayCard.new()
+	copy.id = id
+	copy.name = name
+	copy.rank = rank
+	copy.description = description
+	copy.image = image
+	copy.background = background
+	copy.type = type
+	copy.atq = atq
+	copy.spd = spd
+	copy.hp = hp
+	copy.card_data = card_data
+	return copy

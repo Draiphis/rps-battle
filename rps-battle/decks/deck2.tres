@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://c86bs35id4xt1"]
+[gd_resource type="Resource" script_class="Deck" format=3]
 
-[ext_resource type="Script" uid="uid://c65syn1scsttm" path="res://scripts/deck.gd" id="1_14vgl"]
+[ext_resource type="Script" path="res://scripts/deck.gd" id="1_14vgl"]
 
 [resource]
 script = ExtResource("1_14vgl")
 name = "Deck 2"
-cards = Array[String](["tronconneuse", "tronconneuse", "tronconneuse", "grokayou", "grokayou", "grokayou", "grokayou", "grokayou", "grokayou"])
+cards = Array[String](["tronconneuse", "tronconneuse", "tronconneuse", "grokayou", "grokayou", "grokayou", "grokayou", "grokayou", "grokayou", "tronconneuse"])
