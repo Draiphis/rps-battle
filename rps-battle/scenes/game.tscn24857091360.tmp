@@ -314,40 +314,4 @@ offset_right = 384.0
 offset_bottom = 448.8
 text = "Voulez-vous sacrifier ces monstres ?"
 
-[node name="EndGameScreenL" type="CanvasLayer" parent="." unique_id=1955372173]
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="EndGameScreenL" unique_id=1528178787]
-offset_right = 1152.0
-offset_bottom = 840.0
-color = Color(0, 0, 0, 1)
-
-[node name="Lose" type="Label" parent="EndGameScreenL" unique_id=384390284]
-offset_left = 200.0
-offset_top = 320.0
-offset_right = 968.0
-offset_bottom = 496.0
-theme_override_font_sizes/font_size = 120
-text = "DEFAITE !!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="EndGameScreenV" type="CanvasLayer" parent="." unique_id=574878217]
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="EndGameScreenV" unique_id=1700035814]
-offset_right = 1152.0
-offset_bottom = 840.0
-color = Color(0, 0, 0, 1)
-
-[node name="Victory" type="Label" parent="EndGameScreenV" unique_id=1199804594]
-offset_left = 200.0
-offset_top = 320.0
-offset_right = 968.0
-offset_bottom = 496.0
-theme_override_font_sizes/font_size = 120
-text = "VICTOIRE !!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [connection signal="pressed" from="NextPhaseButton" to="." method="_on_next_phase_button_pressed"]

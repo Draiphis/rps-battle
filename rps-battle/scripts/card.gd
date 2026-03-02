@@ -7,7 +7,10 @@ var game_controller
 var is_player_card := true
 var is_summoned := false
 var is_summonable := false
+var can_attack_this_turn := true
 var instance_id: String
+var rank: int = 1  
+var is_selectable_for_sacrifice := false
 
 enum CardSize { NORMAL, MINI, MAXI, HAND, FIELD }
 
@@ -15,6 +18,7 @@ signal card_selected_combat(instance_id: String)
 signal card_selected_collection(card_id: String)
 signal card_to_remove(card_id: String)
 signal card_zoom(card: displayCard)
+signal card_selected_for_sacrifice(card_node: Card)
 
 func _ready():
 	summon_button.visible = false
@@ -34,6 +38,7 @@ func _ready():
 func set_card(c: displayCard):
 	card = c
 	if card:
+		rank = card.rank
 		$AspectRatioContainer/Panel/CardName.text = card.name
 		$AspectRatioContainer/Panel/Rank.text = str(card.rank)
 		$AspectRatioContainer/Panel/Type.text = card.type
@@ -43,26 +48,25 @@ func set_card(c: displayCard):
 		$AspectRatioContainer/Panel/ATQ.text = "ATQ : %s" % str(card.atq)
 		$AspectRatioContainer/Panel/SPD.text = "SPD : %s" % str(card.spd)
 		$AspectRatioContainer/Panel/HP.text = "HP : %s" % str(card.hp)
-		
 
 func set_display_size(card_size: int):
 	var ratio := 1.0
 	match card_size:
-		CardSize.NORMAL:
-			ratio = 1.0
-		CardSize.HAND:
-			ratio = 0.6
-		CardSize.FIELD:
-			ratio=0.5
-		CardSize.MINI:
-			ratio = 0.4
-		CardSize.MAXI:
-			ratio = 2.0
+		CardSize.NORMAL: ratio = 1.0
+		CardSize.HAND: ratio = 0.6
+		CardSize.FIELD: ratio = 0.5
+		CardSize.MINI: ratio = 0.4
+		CardSize.MAXI: ratio = 2.0
 	self.scale = Vector2(ratio, ratio)
-	self.custom_minimum_size = Vector2(200,280)*ratio
+	self.custom_minimum_size = Vector2(200,280) * ratio
 
 func _gui_input(event):
 	if event is InputEventMouseButton:
+		# Sélection de carte pour sacrifice
+		if is_selectable_for_sacrifice and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			emit_signal("card_selected_for_sacrifice", self)
+			return
+		# Sélection normale
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			emit_signal("card_selected_combat", instance_id)
 			emit_signal("card_selected_collection", card.id)
@@ -72,33 +76,54 @@ func _gui_input(event):
 			emit_signal("card_zoom", card)
 
 func _on_mouse_entered():
-	if is_player_card and is_summonable and not is_summoned and not TurnManager.has_summoned_this_turn :
+	if is_player_card and is_summonable and not is_summoned and not TurnManager.has_summoned_this_turn:
 		summon_button.visible = true
 
 func _on_mouse_exited():
-	# Vérifie si la souris est encore sur le bouton avant de cacher
 	if not summon_button.get_global_rect().has_point(get_viewport().get_mouse_position()):
 		summon_button.visible = false
 
 func _on_summon_pressed():
+	if TurnManager.current_player != TurnManager.Player.PLAYER:
+		print("Vous ne pouvez invoquer que pendant votre tour !")
+		return
+	# --- Bloquer si une invocation a déjà été faite ---
 	if TurnManager.has_summoned_this_turn:
-		
 		print("Vous ne pouvez invoquer qu'une seule carte par tour !")
 		return
-	if game_controller:
+
+	if not game_controller:
+		return
+
+	var field_cards = game_controller.get_cards_on_field(true)
+
+	# --- Vérifier si assez de sacrifices ---
+	if not game_controller.can_summon_card(self, field_cards):
+		print("Pas assez de sacrifices pour invoquer cette carte !")
+		return
+
+	var required = self.rank - 1
+
+	# Carte rang 1 → invoquer directement
+	if required <= 0:
 		game_controller.start_summon_selection(self)
-		TurnManager.has_summoned_this_turn = true  # marquer qu'on a invoqué
-		summon_button.visible = false
-		
+		# Marquer comme invoqué pour le tour
+		TurnManager.has_summoned_this_turn = true
+		return
+
+	# Carte rang >1 → sélectionner les sacrifices
+	var selectable = game_controller.get_cards_on_field(true).filter(func(c):
+		return c.is_summoned
+	)
+
+	# --- Démarrer la sélection de sacrifice ---
+	game_controller.start_sacrifice_selection(self, selectable, required)
+
 func _on_phase_changed(phase):
-	if phase == TurnManager.Phase.MAIN:
-		is_summonable = true
-	else:
-		is_summonable = false
+	is_summonable = (phase == TurnManager.Phase.MAIN)
 
 func update_display():
-	if not card:
-		return
+	if not card: return
 	$AspectRatioContainer/Panel/HP.text = "HP : %s" % str(card.hp)
 	$AspectRatioContainer/Panel/ATQ.text = "ATQ : %s" % str(card.atq)
 	$AspectRatioContainer/Panel/SPD.text = "SPD : %s" % str(card.spd)
