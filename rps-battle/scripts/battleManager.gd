@@ -100,6 +100,8 @@ func _perform_attack(attacker_card: Card, target_card: Card) -> void:
 	second.card.hp = max(second.card.hp, 0)
 	if is_instance_valid(second):
 		second.update_display()
+	await attacker_card.animate_attack(target_card)
+	await target_card.animate_hit()
 	_show_damage_on_card(first.card.atq, second)
 
 	if second.card.hp <= 0:
@@ -149,6 +151,9 @@ func _direct_attack(attacker_card: Card) -> void:
 	target_hp_text.text = str(new_hp)
 
 	# Afficher le damage flottant
+	# Jouer l'animation de l'attaque
+	if is_instance_valid(attacker_card):
+		await attacker_card.animate_attack(null)
 	game_controller.show_damage(damage, target_hp_bar.global_position)
 	attacker_card.can_attack_this_turn = false
 

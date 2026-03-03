@@ -551,11 +551,11 @@ func _on_game_over(player_won: bool):
 	if player_won:
 		print("Victoire ! Vous avez réduit l'adversaire à 0 HP !")
 		await get_tree().process_frame  # permet de rendre la frame finale
-		await get_tree().create_timer(0.8).timeout  # demi-seconde pause
+		await get_tree().create_timer(1.5).timeout  # demi-seconde pause
 		$EndGameScreenV.visible = true
 	else:
 		print("Défaite... Votre HP est à 0.")
 		await get_tree().process_frame  # permet de rendre la frame finale
-		await get_tree().create_timer(0.8).timeout  # demi-seconde pause
+		await get_tree().create_timer(1.5).timeout  # demi-seconde pause
 		$EndGameScreenL.visible = true
 	

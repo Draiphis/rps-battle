@@ -270,25 +270,25 @@ Phase"
 anchors_preset = -1
 anchor_right = 0.132
 anchor_bottom = 0.075
-offset_left = 302.0
-offset_right = 934.93604
+offset_left = 200.0
+offset_right = 832.93604
 offset_bottom = -23.600002
 theme_override_styles/fill = SubResource("StyleBoxFlat_yqjtg")
 show_percentage = false
 
 [node name="PlayerHpBar" type="ProgressBar" parent="CanvasLayer" unique_id=529231488]
-offset_left = 112.0
+offset_left = 201.0
 offset_top = 792.0
-offset_right = 897.0
+offset_right = 986.0
 offset_bottom = 832.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_yqjtg")
 show_percentage = false
 
 [node name="EnemyHpText" type="Label" parent="CanvasLayer" unique_id=244501700]
-offset_left = 312.0
-offset_top = 8.0
-offset_right = 1072.0
-offset_bottom = 34.0
+offset_left = 207.0
+offset_top = 7.0
+offset_right = 967.0
+offset_bottom = 33.0
 text = "100/100"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -297,9 +297,9 @@ vertical_alignment = 1
 anchors_preset = -1
 anchor_right = 0.049000002
 anchor_bottom = 0.030000001
-offset_left = 120.0
+offset_left = 208.0
 offset_top = 800.0
-offset_right = 831.552
+offset_right = 919.552
 offset_bottom = 797.56
 text = "100/100"
 horizontal_alignment = 1

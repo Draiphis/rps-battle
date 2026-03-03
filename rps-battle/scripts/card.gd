@@ -127,3 +127,34 @@ func update_display():
 	$AspectRatioContainer/Panel/HP.text = "HP : %s" % str(card.hp)
 	$AspectRatioContainer/Panel/ATQ.text = "ATQ : %s" % str(card.atq)
 	$AspectRatioContainer/Panel/SPD.text = "SPD : %s" % str(card.spd)
+	
+func animate_attack(target: Card) -> void:
+	var original_position = position
+	var local_direction = Vector2(0, -60)  # déplacement vers l'avant par défaut
+
+	if target and is_instance_valid(target):
+		var direction = (target.global_position - global_position).normalized()
+		local_direction = direction * 60
+
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_OUT)
+
+	# Avance
+	tween.tween_property(self, "position", original_position + local_direction, 0.12)
+	tween.tween_interval(0.05)
+	# Retour
+	tween.tween_property(self, "position", original_position, 0.15)
+
+	await tween.finished
+	
+func animate_hit() -> void:
+	var original_modulate = modulate
+	
+	var tween = create_tween()
+	
+	# Flash rouge
+	tween.tween_property(self, "modulate", Color(1, 0.4, 0.4), 0.08)
+	tween.tween_property(self, "modulate", original_modulate, 0.08)
+
+	await tween.finished

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://rxign5r7jcke"]
+
+[ext_resource type="Texture2D" uid="uid://d1j0vskb8p310" path="res://assets/sprite/rock_attack.png" id="1_hijbc"]
+
+[node name="Area2D" type="Area2D" unique_id=756626966]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1565648640]
+position = Vector2(640, 568.00006)
+rotation = -2.0158553
+scale = Vector2(0.026712466, 0.024292512)
+texture = ExtResource("1_hijbc")
