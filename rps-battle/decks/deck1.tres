@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_ykits")
 name = "Deck 1"
-cards = Array[String](["feuille", "feuille", "feuille", "ciseaux", "ciseaux", "ciseaux", "ciseaux", "feuille", "puit", "puit", "puit", "profchene", "ciseaux", "pierre", "pierre", "pierre", "pierre", "pierre", "grokayou", "tronconneuse"])
+cards = Array[String](["puit", "puit", "puit", "profchene", "profchene", "profchene", "profchene", "profchene", "profchene", "profchene", "profchene", "profchene", "profchene", "profchene", "profchene", "profchene", "profchene", "profchene", "profchene", "profchene"])

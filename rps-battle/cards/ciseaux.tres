@@ -15,5 +15,5 @@ background = ExtResource("1_eqnla")
 type = "Outils"
 atq = 3
 spd = 5
-hp = 3
+hp = 4
 metadata/_custom_type_script = "uid://dhw17fdfxj648"

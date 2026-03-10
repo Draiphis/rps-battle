@@ -2,18 +2,22 @@
 
 [ext_resource type="Script" uid="uid://dhw17fdfxj648" path="res://scripts/displayCard.gd" id="1_flca4"]
 [ext_resource type="Texture2D" uid="uid://c5m46d2x54aec" path="res://assets/images/fond_vegetaux.png" id="1_q7ug7"]
+[ext_resource type="Script" uid="uid://b6flabtas77vu" path="res://scripts/cardEffect.gd" id="2_3vqxi"]
 [ext_resource type="Texture2D" uid="uid://ui5iaqgocyqc" path="res://assets/sprite/arbre.png" id="2_qleid"]
+[ext_resource type="Resource" uid="uid://brlwjqvdeu8vw" path="res://card_effect/deathSummonBranche.tres" id="3_qjv00"]
+[ext_resource type="Resource" uid="uid://uu1ydqasnjp3" path="res://card_effect/deathSummonFeuille.tres" id="4_f6n6y"]
 
 [resource]
 script = ExtResource("1_flca4")
 id = "profchene"
 name = "Professeur Chêne"
-rank = 3
+rank = 1
 description = "invoque 1 Feuille et une Branche à sa mort"
 image = ExtResource("2_qleid")
 background = ExtResource("1_q7ug7")
 type = "Végétaux"
-atq = 4
+atq = 7
 spd = 4
 hp = 14
+effects = Array[ExtResource("2_3vqxi")]([ExtResource("3_qjv00"), ExtResource("4_f6n6y")])
 metadata/_custom_type_script = "uid://dhw17fdfxj648"

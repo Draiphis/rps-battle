@@ -14,6 +14,7 @@ var is_selectable_for_sacrifice := false
 
 enum CardSize { NORMAL, MINI, MAXI, HAND, FIELD }
 
+
 signal card_selected_combat(instance_id: String)
 signal card_selected_collection(card_id: String)
 signal card_to_remove(card_id: String)

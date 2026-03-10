@@ -8,6 +8,12 @@ var info_label: Label = null  # Label pour afficher les instructions
 var attacker: Card = null
 var attacked_cards: Array = []  # cartes déjà attaquées ce tour
 
+
+var type_advantage = {
+	"Végétaux": ["Minéraux"],
+	"Minéraux": ["Outils"],
+	"Outils": ["Végétaux"],
+}
 # Références aux cartes sur le terrain
 var player_field_cards: Array = []
 var enemy_field_cards: Array = []
@@ -96,13 +102,22 @@ func _perform_attack(attacker_card: Card, target_card: Card) -> void:
 		second = target_card
 
 	# Première attaque
-	second.card.hp -= first.card.atq
+	# Calculer les dégâts de base (avec avantage type)
+	var damage = calculate_damage(first, second)
+
+# Vérifier si le défenseur a des effets qui modifient les dégâts reçus
+	for effect in second.card.effects:
+		if effect and "on_receive_attack" in effect:
+			damage = effect.on_receive_attack(second, first, self, damage)
+
+# Appliquer les dégâts finaux
+	second.card.hp -= damage
 	second.card.hp = max(second.card.hp, 0)
 	if is_instance_valid(second):
 		second.update_display()
 	await attacker_card.animate_attack(target_card)
 	await target_card.animate_hit()
-	_show_damage_on_card(first.card.atq, second)
+	_show_damage_on_card(damage, second)
 
 	if second.card.hp <= 0:
 		_destroy_card(second)
@@ -110,11 +125,20 @@ func _perform_attack(attacker_card: Card, target_card: Card) -> void:
 		return
 
 	# Contre-attaque
-	first.card.hp -= second.card.atq
+	# Calculer les dégâts de base
+	var counter_damage = calculate_damage(second, first)
+
+# Vérifier si le défenseur a des effets qui modifient les dégâts reçus
+	for effect in first.card.effects:
+		if effect and "on_receive_attack" in effect:
+			counter_damage = effect.on_receive_attack(first, second, self, counter_damage)
+
+	# Appliquer les dégâts finaux
+	first.card.hp -= counter_damage
 	first.card.hp = max(first.card.hp, 0)
 	if is_instance_valid(first):
 		first.update_display()
-	_show_damage_on_card(second.card.atq, first)
+	_show_damage_on_card(counter_damage, first)
 
 	if first.card.hp <= 0:
 		_destroy_card(first)
@@ -220,6 +244,9 @@ func _on_phase_changed(_new_phase):
 
 
 func _destroy_card(card: Card) -> void:
+	for effect in card.card.effects:
+		if effect and "on_death" in effect:
+			effect.on_death(card, game_controller)
 	if is_instance_valid(card) and card.get_parent():
 		card.get_parent().remove_child(card)
 		card.queue_free()
@@ -269,3 +296,17 @@ func _update_info_text():
 		info_label.text = "Choisissez l'attaquant"
 	else:
 		info_label.text = "Choisissez la cible de l'attaque"
+		
+func has_type_advantage(attacker_type: String, defender_type: String) -> bool:
+	if attacker_type in type_advantage:
+		return defender_type in type_advantage[attacker_type]
+	return false
+	
+func calculate_damage(attacker: Card, defender: Card) -> int:
+	var damage = attacker.card.atq
+	
+	if has_type_advantage(attacker.card.type, defender.card.type):
+		damage *= 2
+		print("Super efficace !")
+	
+	return damage

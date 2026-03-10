@@ -15,5 +15,5 @@ background = ExtResource("1_5xnc6")
 type = "Végétaux"
 atq = 2
 spd = 6
-hp = 3
+hp = 4
 metadata/_custom_type_script = "uid://dhw17fdfxj648"

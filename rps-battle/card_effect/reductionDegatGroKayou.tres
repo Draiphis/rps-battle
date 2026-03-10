@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EffectDamageReducer" format=3 uid="uid://nljtawqqnr70"]
+
+[ext_resource type="Script" uid="uid://ugd1vwku3eh6" path="res://scripts/effectDamageReducer.gd" id="1_ilrh2"]
+
+[resource]
+script = ExtResource("1_ilrh2")
+vulnerable_types = Array[String](["Végétaux"])
+metadata/_custom_type_script = "uid://ugd1vwku3eh6"

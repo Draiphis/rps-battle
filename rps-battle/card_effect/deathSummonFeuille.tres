@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EffectSummonOnDeath" format=3 uid="uid://uu1ydqasnjp3"]
+
+[ext_resource type="Script" uid="uid://dvbotmr831qby" path="res://effectDeathSummon.gd" id="1_35hn5"]
+[ext_resource type="Resource" uid="uid://b3o2pmky6g3fh" path="res://cards/feuille.tres" id="1_dp1ir"]
+
+[resource]
+script = ExtResource("1_35hn5")
+card_to_summon = ExtResource("1_dp1ir")
+metadata/_custom_type_script = "uid://dvbotmr831qby"

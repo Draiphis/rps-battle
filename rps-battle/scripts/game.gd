@@ -559,3 +559,32 @@ func _on_game_over(player_won: bool):
 		await get_tree().create_timer(1.5).timeout  # demi-seconde pause
 		$EndGameScreenL.visible = true
 	
+func summon_card(card_data: displayCard, is_player: bool) -> void:
+	# Cherche un slot vide
+	var slots = player_field_slots if is_player else enemy_field_slots
+	var empty_slots := []
+	for slot in slots.get_children():
+		if slot.get_child_count() == 0:
+			empty_slots.append(slot)
+	
+	if empty_slots.size() == 0:
+		print("Pas de slot vide pour invoquer la carte :", card_data.name)
+		return
+	
+	var chosen_slot = empty_slots[0]  # prend le premier slot vide
+	
+	# Crée l'instance de carte
+	var card_instance = card_scene.instantiate() as Card
+	card_instance.set_card(card_data.duplicate())  # copie les données
+	card_instance.set_display_size(Card.CardSize.FIELD)
+	card_instance.game_controller = self
+	card_instance.is_player_card = is_player
+	card_instance.is_summoned = true
+	card_instance.is_summonable = false
+	card_instance.can_attack_this_turn = true
+	
+	# Ajoute la carte dans le slot
+	chosen_slot.add_child(card_instance)
+	card_instance.position = Vector2.ZERO
+	
+	print("Carte invoquée :", card_data.name, "pour", "joueur" if is_player else "ennemi")

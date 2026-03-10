@@ -3,17 +3,20 @@
 [ext_resource type="Texture2D" uid="uid://ck0q77i0h1jo8" path="res://assets/images/fond_mineraux.png" id="1_anq0e"]
 [ext_resource type="Script" uid="uid://dhw17fdfxj648" path="res://scripts/displayCard.gd" id="1_ms1nx"]
 [ext_resource type="Texture2D" uid="uid://linkyhtuvpdr" path="res://assets/sprite/kayou.png" id="2_o5acs"]
+[ext_resource type="Script" uid="uid://b6flabtas77vu" path="res://scripts/cardEffect.gd" id="2_qsjjt"]
+[ext_resource type="Resource" uid="uid://nljtawqqnr70" path="res://card_effect/reductionDegatGroKayou.tres" id="3_qsjjt"]
 
 [resource]
 script = ExtResource("1_ms1nx")
 id = "grokayou"
 name = "GroKayou"
 rank = 3
-description = "Si cette carte subit des degats, gagne +1 d'ATQ"
+description = "Divise par deux les dégats reçu des cartes qui ne sont pas du type Végétaux"
 image = ExtResource("2_o5acs")
 background = ExtResource("1_anq0e")
 type = "Minéraux"
-atq = 6
+atq = 9
 spd = 1
 hp = 17
+effects = Array[ExtResource("2_qsjjt")]([ExtResource("3_qsjjt")])
 metadata/_custom_type_script = "uid://dhw17fdfxj648"

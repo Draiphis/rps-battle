@@ -11,6 +11,7 @@ class_name displayCard  # le nom de ton type ressource
 @export var atq: int
 @export var spd: int
 @export var hp: int
+@export var effects: Array[CardEffect] = []
 
 
 var card_data
@@ -31,5 +32,6 @@ func deep_copy() -> displayCard:
 	copy.atq = atq
 	copy.spd = spd
 	copy.hp = hp
+	copy.effects = effects
 	copy.card_data = card_data
 	return copy
