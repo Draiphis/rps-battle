@@ -11,8 +11,8 @@
 script = ExtResource("1_flca4")
 id = "profchene"
 name = "Professeur Chêne"
-rank = 1
-description = "invoque 1 Feuille et une Branche à sa mort"
+rank = 3
+description = "invoque une Feuille et une Branche à sa mort"
 image = ExtResource("2_qleid")
 background = ExtResource("1_q7ug7")
 type = "Végétaux"

@@ -560,31 +560,38 @@ func _on_game_over(player_won: bool):
 		$EndGameScreenL.visible = true
 	
 func summon_card(card_data: displayCard, is_player: bool) -> void:
-	# Cherche un slot vide
 	var slots = player_field_slots if is_player else enemy_field_slots
 	var empty_slots := []
+
 	for slot in slots.get_children():
 		if slot.get_child_count() == 0:
 			empty_slots.append(slot)
-	
+
 	if empty_slots.size() == 0:
-		print("Pas de slot vide pour invoquer la carte :", card_data.name)
+		print("Pas de slot vide pour invoquer :", card_data.name)
 		return
-	
-	var chosen_slot = empty_slots[0]  # prend le premier slot vide
-	
-	# Crée l'instance de carte
+
+	var chosen_slot = empty_slots[0]
+
+	# Création de la carte
 	var card_instance = card_scene.instantiate() as Card
-	card_instance.set_card(card_data.duplicate())  # copie les données
+	card_instance.set_card(card_data.duplicate())
 	card_instance.set_display_size(Card.CardSize.FIELD)
+
 	card_instance.game_controller = self
 	card_instance.is_player_card = is_player
 	card_instance.is_summoned = true
 	card_instance.is_summonable = false
 	card_instance.can_attack_this_turn = true
-	
-	# Ajoute la carte dans le slot
+
+	# 🔗 IMPORTANT : mêmes connexions que les autres cartes
+	card_instance.connect("card_zoom", Callable(self, "_on_card_zoom"))
+
+	if is_player:
+		card_instance.connect("card_selected_for_sacrifice", Callable(self, "on_sacrifice_card_clicked"))
+
+	# Ajout au terrain
 	chosen_slot.add_child(card_instance)
 	card_instance.position = Vector2.ZERO
-	
-	print("Carte invoquée :", card_data.name, "pour", "joueur" if is_player else "ennemi")
+
+	print("Carte invoquée :", card_data.name)

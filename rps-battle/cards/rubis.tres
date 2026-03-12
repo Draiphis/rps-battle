@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="displayCard" format=3 uid="uid://dy1y51cfor55x"]
+
+[ext_resource type="Texture2D" uid="uid://ck0q77i0h1jo8" path="res://assets/images/fond_mineraux.png" id="1_7jai5"]
+[ext_resource type="Script" uid="uid://b6flabtas77vu" path="res://scripts/cardEffect.gd" id="1_a3hx5"]
+[ext_resource type="Script" uid="uid://dhw17fdfxj648" path="res://scripts/displayCard.gd" id="2_7jai5"]
+
+[resource]
+script = ExtResource("2_7jai5")
+id = "rubis"
+name = "Chevalier Gemme : Rubis"
+rank = 2
+background = ExtResource("1_7jai5")
+type = "Minéraux"
+atq = 9
+spd = 6
+hp = 6
+metadata/_custom_type_script = "uid://dhw17fdfxj648"

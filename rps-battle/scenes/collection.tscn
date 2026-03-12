@@ -10,6 +10,8 @@
 [ext_resource type="Resource" uid="uid://ddmnnpopu15p0" path="res://cards/grokayou.tres" id="7_yhtot"]
 [ext_resource type="Resource" uid="uid://cskd73waeatp4" path="res://cards/tronconneuse.tres" id="8_04f8q"]
 [ext_resource type="Resource" uid="uid://co3625q1jt7kl" path="res://cards/profchene.tres" id="9_sgbrj"]
+[ext_resource type="Resource" uid="uid://bgfktrfy6tqyn" path="res://cards/branche.tres" id="10_y58qt"]
+[ext_resource type="Resource" uid="uid://dy1y51cfor55x" path="res://cards/rubis.tres" id="11_m2j7v"]
 
 [node name="Collection" type="Control" unique_id=508822812]
 layout_mode = 3
@@ -17,7 +19,7 @@ anchors_preset = 0
 offset_right = 1080.0
 offset_bottom = 600.0
 script = ExtResource("1_mldy4")
-cards = Array[ExtResource("2_5vqia")]([ExtResource("3_5vqia"), ExtResource("4_yhtot"), ExtResource("5_p8q5u"), ExtResource("6_2ukpw"), ExtResource("7_yhtot"), ExtResource("8_04f8q"), ExtResource("9_sgbrj")])
+cards = Array[ExtResource("2_5vqia")]([ExtResource("3_5vqia"), ExtResource("4_yhtot"), ExtResource("5_p8q5u"), ExtResource("6_2ukpw"), ExtResource("7_yhtot"), ExtResource("8_04f8q"), ExtResource("9_sgbrj"), ExtResource("10_y58qt"), ExtResource("11_m2j7v")])
 card_scene = ExtResource("6_04f8q")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=2018829237]

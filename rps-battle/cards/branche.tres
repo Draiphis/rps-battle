@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c5m46d2x54aec" path="res://assets/images/fond_vegetaux.png" id="1_4hacc"]
 [ext_resource type="Script" uid="uid://b6flabtas77vu" path="res://scripts/cardEffect.gd" id="2_eybb2"]
 [ext_resource type="Texture2D" uid="uid://4dvrsn27k53y" path="res://assets/sprite/branche.png" id="3_eybb2"]
+[ext_resource type="Resource" uid="uid://uu1ydqasnjp3" path="res://card_effect/deathSummonFeuille.tres" id="3_tvou6"]
 [ext_resource type="Script" uid="uid://dhw17fdfxj648" path="res://scripts/displayCard.gd" id="4_qug76"]
 
 [resource]
@@ -17,4 +18,5 @@ type = "Végétaux"
 atq = 6
 spd = 4
 hp = 7
+effects = Array[ExtResource("2_eybb2")]([ExtResource("3_tvou6")])
 metadata/_custom_type_script = "uid://dhw17fdfxj648"

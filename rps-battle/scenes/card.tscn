@@ -92,15 +92,18 @@ stretch_mode = 5
 
 [node name="CardName" type="Label" parent="AspectRatioContainer/Panel" unique_id=890030396]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 15.0
+offset_left = 23.0
+offset_top = 0.99720764
 offset_right = 175.0
-offset_bottom = 38.0
+offset_bottom = 23.997208
 theme_override_colors/font_color = Color(0.95245534, 0.72981334, 0.059892043, 1)
 theme_override_colors/font_shadow_color = Color(0.28185645, 0.24717042, 0.1555722, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_constants/line_spacing = -1
+theme_override_constants/paragraph_spacing = -1
+theme_override_font_sizes/font_size = 13
 text = "Nom de la carte"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Rank" type="Label" parent="AspectRatioContainer/Panel" unique_id=614287247]
 layout_mode = 0
@@ -116,10 +119,10 @@ vertical_alignment = 1
 
 [node name="Type" type="Label" parent="AspectRatioContainer/Panel" unique_id=876324868]
 layout_mode = 0
-offset_left = 35.0
-offset_top = 37.0
-offset_right = 155.0
-offset_bottom = 52.0
+offset_left = 12.0
+offset_top = 43.0
+offset_right = 83.0
+offset_bottom = 58.0
 theme_override_colors/font_color = Color(0.9529412, 0.5921569, 0.05882353, 1)
 theme_override_colors/font_shadow_color = Color(0.28235295, 0.24705882, 0.15686275, 1)
 theme_override_font_sizes/font_size = 10
